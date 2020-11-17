@@ -1,13 +1,6 @@
 <?php
-require '../classes/DB.php';
 
-class Info {
-
-	protected $db;
-
-	public function __construct() {
-		$this->db = (new DB())->getDB();
-	}
+class Info extends DB{
 
 	public function getAll()
 	{

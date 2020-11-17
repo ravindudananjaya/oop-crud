@@ -1,8 +1,11 @@
 <?php
-require '../controllers/InfoController.php';
+require 'classes/DB.php';
+require 'models/Info.php';
+require 'controllers/InfoController.php';
 
 // initialize controller object
-$infoController= new InfoController();
+$infoController = new InfoController();
+
 ?>
 
 <!doctype html>
@@ -47,7 +50,29 @@ $infoController= new InfoController();
 
   </table>
 
+<div class="container">
+  
+  <form method="post" action="Functions/AddRecord.php" >
 
+    <input type="hidden" name="id" value="<?php echo $id; ?>">
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" class="form-control"name="name" placeholder="" value="" >
+      </div>
+      <div class="form-group">
+        <label>Address</label>
+        <input type="text" class="form-control"name="address" placeholder=""
+        value="" >
+      </div>
+      <div class="input-group">
+     
+      <button type="submit" name="save" class="btn btn-dark" >Submit</button>
+    
+      </div>
+
+  </form>
+
+</div>
 
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

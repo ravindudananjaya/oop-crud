@@ -1,8 +1,7 @@
 <?php
-require '../models/Info.php';
-
 
 class InfoController {
+
 	public function getAll()
 	{
 		$info = new Info();
@@ -15,5 +14,10 @@ class InfoController {
 		}
 
 		return $records;
+	}
+
+	public function add($payload)
+	{
+		// insert
 	}
 }

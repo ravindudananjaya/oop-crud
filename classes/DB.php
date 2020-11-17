@@ -1,7 +1,9 @@
 <?php
 class DB {
-	public function getDB() {
-		return mysqli_connect('localhost','root','','crud');
+	protected $db;
+
+	public function __construct() {
+		$this->db = mysqli_connect('localhost','root','','crud');
 	}
 }
 
