@@ -22,6 +22,21 @@ $infoController = new InfoController();
 </head>
 <body>
 
+  <?php
+  if(isset($_GET['success'])){
+
+    if($_GET['success'] == 1) {
+     echo '<div>Successfull!</div>';
+    } else {
+      echo '<div>failed!</div>';
+    }
+
+    
+  }
+  ?>
+
+
+
   <table class="table">
     <tr>
       <th>ID</th>
@@ -42,6 +57,13 @@ $infoController = new InfoController();
         <td>
           <?php echo $value['address']; ?>
         </td>
+        <td>
+          <form method="post" action="Functions/EditRecord.php" >
+          <button name="id" value="<?php echo $value['id']; ?>">edit</button>
+          </form>
+          <form method="post" action="Functions/DeleteRecord.php" >
+          <button name="id" value="<?php echo $value['id']; ?>">delete</button>
+          </form>
       </tr>
       <?php
     }
@@ -51,13 +73,20 @@ $infoController = new InfoController();
   </table>
 
 <div class="container">
-  
-  <form method="post" action="Functions/AddRecord.php" >
+  <a href = index.php ><button>index</button></a> 
+</div>
 
-    <input type="hidden" name="id" value="<?php echo $id; ?>">
+
+
+  <div class="container">
+
+    <form method="post" action="Functions/AddRecord.php" >
+
+      <input type="hidden" name="id" value="">
       <div class="form-group">
+        <input type="text" name="id" value="<?php echo $id;?>"><br>
         <label>Name</label>
-        <input type="text" class="form-control"name="name" placeholder="" value="" >
+        <input type="text" class="form-control"name="name" placeholder="<?php echo $value['name'];?>" value="" >
       </div>
       <div class="form-group">
         <label>Address</label>
@@ -65,14 +94,15 @@ $infoController = new InfoController();
         value="" >
       </div>
       <div class="input-group">
-     
-      <button type="submit" name="save" class="btn btn-dark" >Submit</button>
-    
+
+        <button type="submit" name="save" class="btn btn-dark" >Submit</button>
+        <button type="submit" name="update" class="btn btn-dark">Update</button>
+        
       </div>
 
-  </form>
+    </form>
 
-</div>
+  </div>
 
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
