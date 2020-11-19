@@ -4,13 +4,10 @@ require '../models/Info.php';
 require '../controllers/InfoController.php';
 
 $infoController = new InfoController();
-
-		
-		if($infoController->edit($_POST)) {
-			header('location: ../index.php?success=1');
-		} else {
-			header('location: ../index.php?success=0');
-		}
+	
+	$r = $infoController->edit($_POST);
+	// print_r($r);
+	header('location: ../edit.php')
 	
 
 

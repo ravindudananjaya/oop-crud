@@ -38,10 +38,16 @@ class InfoController {
 	public function edit($payload)
 	{
 		$info = new Info();
-		$id = $payload['id'];
-		// $name= $payload['name'];
-		// $address= $payload['address'];
+		$results = $info->edit($payload['id']);
 
-		// return $info->update($payload['id'], $payload['name'], $payload['address']);
+		
+		
+		$row = mysqli_fetch_row($results);
+		// $id = $row[0];
+		// $name = $row[1];
+		// $address = $row[2];
+		return $row;
+	
+		
 	}
 }

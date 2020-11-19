@@ -23,4 +23,13 @@ class Info extends DB{
 	{
 		return mysqli_query($this->db, "UPDATE info SET name = '$name', address = '$address' WHERE  id= '$id'");
 	}
+
+	public function edit($id)
+	{
+
+		return mysqli_query($this->db,  "SELECT * FROM info WHERE id=$id");
+		
+		// return mysqli_query($this->db,  "SELECT * FROM info WHERE id=$id");
+	}
 }
+

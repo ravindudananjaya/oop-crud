@@ -23,56 +23,16 @@ $infoController = new InfoController();
 </head>
 <body>
 
-  <?php
-  if(isset($_GET['success'])){
-
-    if($_GET['success'] == 1) {
-     echo '<div>Successfull!</div>';
-    } else {
-      echo '<div>failed!</div>';
-    }
-
-    
-  }
-  ?>
+  
+<?php 
+$infoController->edit($id) as $key => $value 
+echo $value['name'];
+?>
 
 
+  
 
-  <table class="table">
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Address</th>
-    </tr>
-    <?php
-    // loop through records
-    foreach ($infoController->getAll() as $key => $value) {
-      ?>
-      <tr>
-        <td>
-          <?php echo $value['id']; ?>
-        </td>
-        <td>
-          <?php echo $value['name']; ?>
-        </td>
-        <td>
-          <?php echo $value['address']; ?>
-        </td>
-        <td>
-          <form method="post" action="Functions/EditRecord.php" >
-          <button name="id" value="<?php echo $value['id']; ?>">edit</button>
-          </form>
-          <form method="post" action="Functions/DeleteRecord.php" >
-          <button name="id" value="<?php echo $value['id']; ?>">delete</button>
-          </form>
-      </tr>
-      <?php
-    }
-
-    ?>
-
-  </table>
-
+ 
 <div class="container">
   <a href = index.php ><button>index</button></a> 
 </div>
@@ -85,7 +45,7 @@ $infoController = new InfoController();
 
       <input type="hidden" name="id" value="">
       <div class="form-group">
-        
+       
         <label>Name</label>
         <input type="text" class="form-control"name="name" >
       </div>
@@ -96,8 +56,9 @@ $infoController = new InfoController();
       </div>
       <div class="input-group">
 
-        <button type="submit" name="save" class="btn btn-dark" >Submit</button>
-             
+        
+        <button type="submit" name="update" class="btn btn-dark">Update</button>
+        
       </div>
 
     </form>
