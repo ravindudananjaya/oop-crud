@@ -24,13 +24,13 @@ $infoController = new InfoController();
 <body>
 
   
-<?php 
-$infoController->edit($id) as $key => $value 
-echo $value['name'];
-?>
 
+    <?php
+    
+       $r = $infoController->edit($_GET['id']);
+       
 
-  
+      ?>
 
  
 <div class="container">
@@ -41,18 +41,19 @@ echo $value['name'];
 
   <div class="container">
 
-    <form method="post" action="Functions/AddRecord.php" >
+    <form method="post" action="Functions/UpdateRecord.php" >
 
-      <input type="hidden" name="id" value="">
+      <input type="hidden" name="id" value="<?php echo $r[0]; ?>">
       <div class="form-group">
        
         <label>Name</label>
-        <input type="text" class="form-control"name="name" >
+        <input type="text" class="form-control"name="name" placeholder="<?php echo $r[1]; ?>"
+        value="<?php echo $r[1]; ?>" >
       </div>
       <div class="form-group">
         <label>Address</label>
-        <input type="text" class="form-control"name="address" placeholder=""
-        value="" >
+        <input type="text" class="form-control"name="address" placeholder="<?php echo $r[2]; ?>"
+        value="<?php echo $r[2]; ?>" >
       </div>
       <div class="input-group">
 
@@ -63,7 +64,7 @@ echo $value['name'];
 
     </form>
 
-  </div>
+  </div> -->
 
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

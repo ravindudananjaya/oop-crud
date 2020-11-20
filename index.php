@@ -4,6 +4,7 @@ require 'models/Info.php';
 require 'controllers/InfoController.php';
 require 'models/var.php';
 
+
 // initialize controller object
 $infoController = new InfoController();
 
@@ -27,59 +28,29 @@ $infoController = new InfoController();
   if(isset($_GET['success'])){
 
     if($_GET['success'] == 1) {
-     echo '<div>Successfull!</div>';
+     echo '<div  class="alert alert-success" >Successfull!</div>';
     } else {
-      echo '<div>failed!</div>';
+      echo '<div  class="alert alert-failed" >failed!</div>';
     }
 
     
   }
   ?>
+<div class="container" style="border-radius: 20px; margin-top: 20px;">
+  <?php if (isset($_SESSION['msg'])) { ?>
 
-
-
-  <table class="table">
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Address</th>
-    </tr>
-    <?php
-    // loop through records
-    foreach ($infoController->getAll() as $key => $value) {
-      ?>
-      <tr>
-        <td>
-          <?php echo $value['id']; ?>
-        </td>
-        <td>
-          <?php echo $value['name']; ?>
-        </td>
-        <td>
-          <?php echo $value['address']; ?>
-        </td>
-        <td>
-          <form method="post" action="Functions/EditRecord.php" >
-          <button name="id" value="<?php echo $value['id']; ?>">edit</button>
-          </form>
-          <form method="post" action="Functions/DeleteRecord.php" >
-          <button name="id" value="<?php echo $value['id']; ?>">delete</button>
-          </form>
-      </tr>
+    <div class="alert alert-success" id="Message">
       <?php
-    }
+        echo $_SESSION['msg']; 
+        unset($_SESSION['msg']);
+      ?>
+    </div>
 
-    ?>
-
-  </table>
-
-<div class="container">
-  <a href = index.php ><button>index</button></a> 
+  <?php } ?>
 </div>
 
 
-
-  <div class="container">
+  <div class="container" style="margin-bottom: 10px;">
 
     <form method="post" action="Functions/AddRecord.php" >
 
@@ -103,6 +74,49 @@ $infoController = new InfoController();
     </form>
 
   </div>
+
+<div class="container" style="border-radius: 10px;">
+  <table class="table" style="background-color: lightgray; ">
+    <tr class="thead-dark" >
+      <th>ID</th>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Action</th>
+    </tr>
+    <?php
+    // loop through records
+    foreach ($infoController->getAll() as $key => $value) {
+      ?>
+      <tr >
+        <td>
+          <?php echo $value['id']; ?>
+        </td>
+        <td>
+          <?php echo $value['name']; ?>
+        </td>
+        <td>
+          <?php echo $value['address']; ?>
+        </td>
+        <td>
+          <a href="edit.php?id=<?php echo $value['id']; ?>" ><button class="btn btn-dark" style="margin-bottom: 5px;">Edit</button></a>
+          <!-- button name="id" value="<?php echo $value['id']; ?>">edit</button> -->
+         
+          <form method="post" action="Functions/DeleteRecord.php" >
+          <button name="id" value="<?php echo $value['id']; ?>" class="btn btn-dark">delete</button>
+          </form>
+        </td>
+      </tr>
+      <?php
+    }
+
+    ?>
+
+  </table>
+</div>
+
+
+
+
 
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 class InfoController {
 
 	public function getAll()
@@ -19,7 +19,24 @@ class InfoController {
 	public function add($payload)
 	{
 		$info = new Info();
-		return $info->store($payload['name'], $payload['address']);
+		if ( $payload['name'] == null) {
+
+			$_SESSION['msg'] = "<div>You cant leave name field empty</div>";
+			
+		 	
+		 
+		 } else { 
+
+		 	if ($payload['address'] == null) {
+		 			$_SESSION['msg'] = "<div>You cant leave address field empty</div>";
+		 		} else {	
+		 	return $info->store($payload['name'], $payload['address']);
+		 	}
+		 }
+		
+		
+		
+		
 	}
 
 	public function delete($payload)
@@ -32,21 +49,27 @@ class InfoController {
 	public function update($payload)
 	{
 		$info = new Info();
+		
 		return $info->update($payload['id'], $payload['name'], $payload['address']);
 	}
 
-	public function edit($payload)
+	public function edit($id)
 	{
 		$info = new Info();
-		$results = $info->edit($payload['id']);
+		$results = $info->edit($id);
 
 		
 		
 		$row = mysqli_fetch_row($results);
-		// $id = $row[0];
-		// $name = $row[1];
-		// $address = $row[2];
+		
+		// $id = $records[0];
+		// $name = $records[1];
+		// $address = $records[2];
+
+		// echo $id,$name,$address;
+		// print_r($records);
 		return $row;
+		// print_r($row); 
 	
 		
 	}
