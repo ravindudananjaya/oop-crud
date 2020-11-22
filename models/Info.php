@@ -37,4 +37,3 @@ class Info extends DB{
 		// return mysqli_query($this->db,  "SELECT * FROM info WHERE id=$id");
 	}
 }
-

@@ -1,5 +1,7 @@
 <?php
 
+require 'classes/DB.php';
+require 'models/Users.php';
 
 // initialize controller object
 
@@ -19,24 +21,50 @@
   <title>PHP Sample</title>
 </head>
 <body>
+     
 
+  <?php
+  if(isset($_GET['edit'])){
+
+    if($_GET['edit'] == 0) {
+     echo '<div  class="alert alert-warning" >You cant leave Username and Password Empty</div>';
+    } elseif ($_GET['edit'] == 1) {
+     echo '<div  class="alert alert-warning" >You cant leave Username Empty</div>';
+    } elseif ($_GET['edit'] == 2) {
+      echo '<div  class="alert alert-warning" >You cant leave Password Empty</div>';
+    } elseif ($_GET['edit'] == 3) {
+      echo '<div  class="alert alert-warning" >Check Username</div>';
+    } elseif ($_GET['edit'] == 4) {
+      echo '<div  class="alert alert-warning" >Incorrect Password </div>';
+    }
+
+
+    
+  }
+  ?>
+</div>
  
-  <div id="frm">
+  <div id="frm" class="container" style="padding: 50px;">
+    <h1 class="display-1 "> LOGIN <a href="signup.php" class="display-4">or sign up</a></h1>
+  
     <form action="Functions/Login.php" method="POST">
+      <div class="form-group">
       <p>
         <label>Username:</label>
-        <input type="text" id="username" name="username">
+        <input class="form-control"  type="text" id="username" name="username">
       </p>
-
+    </div>
+     <div class="form-group">
       <p>
         <label>Password:</label>
-        <input type="text" id="password" name="password">
+        <input class="form-control" type="text" id="password" name="password">
       </p>
-
+    </div>
+       <div class="form-group">
       <p>
-        <input type="submit" id="btn" value="Login">
+        <input class="btn btn-dark" type="submit" id="btn" value="Login">
       </p>
-
+    </div>
     </form>
   </div>
 

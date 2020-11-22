@@ -1,4 +1,5 @@
 <?php
+
 require 'classes/DB.php';
 require 'models/Info.php';
 require 'controllers/InfoController.php';
