@@ -2,6 +2,11 @@
 
 class Info extends DB{
 
+	public function login($username)
+	{
+		return mysqli_query($this->db,  "SELECT * FROM users WHERE username=$username");
+	}
+
 	public function getAll()
 	{
 		return mysqli_query($this->db, "SELECT * FROM info");

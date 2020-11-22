@@ -9,9 +9,9 @@ $infoController = new InfoController();
 
 		if($infoController->add($_POST)) {
 			
-			header('location: ../index.php');
+			header('location: ../table.php');
 		} else {
-			header('location: ../index.php?success=0');
+			header('location: ../table.php?success=0');
 		}
 
 

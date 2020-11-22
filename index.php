@@ -1,12 +1,8 @@
 <?php
-require 'classes/DB.php';
-require 'models/Info.php';
-require 'controllers/InfoController.php';
-require 'models/var.php';
 
 
 // initialize controller object
-$infoController = new InfoController();
+
 
 ?>
 
@@ -24,95 +20,25 @@ $infoController = new InfoController();
 </head>
 <body>
 
-  <?php
-  if(isset($_GET['success'])){
+ 
+  <div id="frm">
+    <form action="Functions/Login.php" method="POST">
+      <p>
+        <label>Username:</label>
+        <input type="text" id="username" name="username">
+      </p>
 
-    if($_GET['success'] == 1) {
-     echo '<div  class="alert alert-success" >Successfull!</div>';
-    } else {
-      echo '<div  class="alert alert-failed" >failed!</div>';
-    }
+      <p>
+        <label>Password:</label>
+        <input type="text" id="password" name="password">
+      </p>
 
-    
-  }
-  ?>
-<div class="container" style="border-radius: 20px; margin-top: 20px;">
-  <?php if (isset($_SESSION['msg'])) { ?>
-
-    <div class="alert alert-success" id="Message">
-      <?php
-        echo $_SESSION['msg']; 
-        unset($_SESSION['msg']);
-      ?>
-    </div>
-
-  <?php } ?>
-</div>
-
-
-  <div class="container" style="margin-bottom: 10px;">
-
-    <form method="post" action="Functions/AddRecord.php" >
-
-      <input type="hidden" name="id" value="">
-      <div class="form-group">
-        
-        <label>Name</label>
-        <input type="text" class="form-control"name="name" >
-      </div>
-      <div class="form-group">
-        <label>Address</label>
-        <input type="text" class="form-control"name="address" placeholder=""
-        value="" >
-      </div>
-      <div class="input-group">
-
-        <button type="submit" name="save" class="btn btn-dark" >Submit</button>
-             
-      </div>
+      <p>
+        <input type="submit" id="btn" value="Login">
+      </p>
 
     </form>
-
   </div>
-
-<div class="container" style="border-radius: 10px;">
-  <table class="table" style="background-color: lightgray; ">
-    <tr class="thead-dark" >
-      <th>ID</th>
-      <th>Name</th>
-      <th>Address</th>
-      <th>Action</th>
-    </tr>
-    <?php
-    // loop through records
-    foreach ($infoController->getAll() as $key => $value) {
-      ?>
-      <tr >
-        <td>
-          <?php echo $value['id']; ?>
-        </td>
-        <td>
-          <?php echo $value['name']; ?>
-        </td>
-        <td>
-          <?php echo $value['address']; ?>
-        </td>
-        <td>
-          <a href="edit.php?id=<?php echo $value['id']; ?>" ><button class="btn btn-dark" style="margin-bottom: 5px;">Edit</button></a>
-          <!-- button name="id" value="<?php echo $value['id']; ?>">edit</button> -->
-         
-          <form method="post" action="Functions/DeleteRecord.php" >
-          <button name="id" value="<?php echo $value['id']; ?>" class="btn btn-dark">delete</button>
-          </form>
-        </td>
-      </tr>
-      <?php
-    }
-
-    ?>
-
-  </table>
-</div>
 
 
 

@@ -7,9 +7,9 @@ $infoController = new InfoController();
 
 
 		if($infoController->delete($_POST)) {
-			header('location: ../index.php?success=1');
+			header('location: ../table.php?success=1');
 		} else {
-			header('location: ../index.php?success=0');
+			header('location: ../table.php?success=0');
 		}
 	
 

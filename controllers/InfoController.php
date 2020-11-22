@@ -2,6 +2,15 @@
 session_start();
 class InfoController {
 
+	public $info;
+
+	public function __construct() {
+		$this->info = new Info();
+	}
+
+
+
+
 	public function getAll()
 	{
 		$info = new Info();
