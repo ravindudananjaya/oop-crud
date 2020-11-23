@@ -10,6 +10,28 @@
 </head>
 <body>
 
+	  <?php
+  if(isset($_GET['edit'])){
+
+    if($_GET['edit'] == 0) {
+     echo '<div  class="alert alert-warning" >You cant leave Username and Password Empty</div>';
+    } elseif ($_GET['edit'] == 1) {
+     echo '<div  class="alert alert-warning" >You cant leave Username Empty</div>';
+    } elseif ($_GET['edit'] == 2) {
+      echo '<div  class="alert alert-warning" >You cant leave Password Empty</div>';
+    } elseif ($_GET['edit'] == 3) {
+      echo '<div  class="alert alert-warning" >Check Username</div>';
+    } elseif ($_GET['edit'] == 4) {
+      echo '<div  class="alert alert-warning" >Incorrect Password </div>';
+    } elseif ($_GET['edit'] == 5) {
+      echo '<div  class="alert alert-warning" >User Added. Login to Continue</div>';
+    }  
+
+
+    
+  }
+  ?>
+
 	  <div id="frm" class="container" style="padding: 50px;">
     <h1 class="display-1 "> SIGN UP <a href="index.php" class="display-4">or login</a></h1>
   

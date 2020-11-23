@@ -36,7 +36,9 @@ require 'models/Users.php';
       echo '<div  class="alert alert-warning" >Check Username</div>';
     } elseif ($_GET['edit'] == 4) {
       echo '<div  class="alert alert-warning" >Incorrect Password </div>';
-    }
+    } elseif ($_GET['edit'] == 5) {
+      echo '<div  class="alert alert-warning" >User Added. Login to Continue</div>';
+    }  
 
 
     

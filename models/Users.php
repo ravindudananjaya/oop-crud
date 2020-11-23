@@ -13,6 +13,14 @@ class Users extends DB{
 
 	}
 
+
+
+	public function add($username, $password)
+	{
+		 return mysqli_query($this->db, "INSERT INTO users (username, password) VALUES ('$username' , '$password')");
+			
+	}
+
 }
 
 
